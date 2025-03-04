@@ -1,0 +1,38 @@
+---
+title: "Contingency Tables"
+author: "Nicholas Wendt"
+date: "2025-03-04"
+output: pdf_document
+---
+
+## Contingency Tables
+
+#### Joint, Marginal and Conditional Probabilities
+
+$\pi_{ij} = P(X=i, Y=j)$
+
+ith row, jth column
+
+$\sum \pi_{ij}=1$ (probabilities of all cells sum up to 1)
+
+These $\pi_{ij}'s$ form the joint distribution of X and Y
+
+$\hat{\pi}_{ij} = n_{ij}/n$ where n is the total sample size and $n_{ij}$ is the number of observations in the ith row and jth column
+
+The marginal distributions are the row and column totals of the joint probabilities
+
+For a 2x2 table, $\pi_{1+}=\pi_{11}+\pi_{12}$ and $\pi_{+1}=\pi_{11}+\pi_{21}$
+
+The conditional probabilities come from holding one of the variables constant. $P(X=1 | Y=1)$ or $P(X=1|Y=2)$
+
+### Sensitivity and Specificity
+
+$Sensitivity = P(X=1|Y=1)$
+
+$Specificity = P(X=2|Y=2)$
+
+### Independence
+
+2 categorical variables X and Y that are *both response variables* are said to be independent if $P(X=i, Y=j) = P(X=i)*P(Y=j)$ for all i, j
+
+$\pi_{ij}=\pi_{i+}*\pi_{+j}$
