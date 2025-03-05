@@ -1,0 +1,40 @@
+---
+title: "t statistic"
+author: "Nicholas Wendt"
+date: "2025-03-05"
+output: pdf_document
+---
+
+### What is a t statistic
+
+The t statistic comes from the t distribution. This distribution is similar to a normal distribution and actually converges to a standard normal distribution when the sample size goes to infinity. The statistic can be used to measure the probability of getting our observed value under the assumption that the null hypothesis is true. If the probability (p-value) of seeing our observation is low, we reject the null hypothesis.
+
+### How to calculate
+
+The formula to calculate a t statistic from a set of data is first calculate mean ( $\bar{x}$ ) and sample standard deviation (S)
+
+$$
+t= \frac{\bar{x}-\mu}{\frac{s}{\sqrt{n}}}
+$$
+
+The t statistic then follows a t distribution with $df = n-1$
+
+### How to calculate for Linear Regression
+
+In simple linear regression, we have 2 parameters to estimate $\beta_1$ (the intercept estimate) and $\beta_2$ (the slope estimate). We therefore lose 2 degrees of freedom.
+
+Recall that the way to estimate the parameters for linear regression are as follows:
+
+$$
+\hat{\beta_2}=\frac{\sum(Y_I-\bar{Y})(X_i-\bar{X})}{\sum(X_i-\bar{X})^2}
+$$
+
+and
+
+$$
+\hat{\beta_1}=\bar{Y}-\hat{\beta_2}\bar{X}
+$$
+
+Now we can conduct a statistical analysis on if these coefficients are significant and actually improve our model, or if they are a waste of space and degrees of freedom.
+
+We can test to see whether $\hat{\beta_2}$ is equal to a specific number, but the far more common test it to see whether a coefficient is equal to 0 (i.e. $\hat{\beta_2}=0$ ). This last test is called the test of statistical significance of a coefficient.
