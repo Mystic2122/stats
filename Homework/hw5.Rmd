@@ -1,0 +1,21 @@
+---
+title: "hw_5"
+author: "Nicholas Wendt"
+date: "2025-03-11"
+output: pdf
+---
+
+Questions: 2.18, 2.21, 2.22, 2.28
+
+## Question 2.18
+
+Yes, it is valid to apply the chi-squared test of independence here since all counts in each cell are ≥ 5 In this table, each factor (A, B, C) represents a separate categorical variable. We can use this table to create 3 separate 2x2 contingency tables. Since the number of men and women who disagree with each statement are implied (100-number who agree), we have all the information we need to cross-classify gender with each of the three statements.
+
+```{r}
+contingency.table <- data.frame(Gender = c("Men", "Women"),
+                                Agree_A = c(60,70),
+                                Disagree_A = c(40,25))
+print(contingency.table)
+```
+
+## Question 2.21
