@@ -1,0 +1,41 @@
+---
+title: "practice_problems"
+author: "Nicholas Wendt"
+date: "2025-03-08"
+output: pdf_document
+---
+
+```{r}
+nums <-c(762,327,468,484,239,477)
+observed <- matrix(nums, byrow = TRUE, ncol = 3, nrow = 2)
+rownames(observed) <- c("F", "M")
+colnames(observed) <- c("Dem", "ind", "Rep")
+print(observed)
+```
+
+```{r}
+row.sum <- rowSums(observed)
+col.sum <- colSums(observed)
+total <- sum(nums)
+expected <- (row.sum %*% t(col.sum))/total
+print(expected)
+```
+
+```{r}
+cat("Row totals: ", row.sum)
+cat("\nCol totals: ", col.sum)
+```
+
+```{r}
+print(total)
+```
+
+```{r}
+test.stat <- sum((observed - expected)^2 / expected )
+print(test.stat)
+```
+
+```{r}
+chi.stat <- chisq.test(observed)
+print(chi.stat)
+```
