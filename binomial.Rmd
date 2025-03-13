@@ -1,0 +1,111 @@
+---
+title: "Binomial"
+author: "Nick Wendt"
+date: "2025-02-13"
+output: html_document
+---
+
+### Calculates the exact probability of x successes
+
+$p(X=x)\ where\ X \sim Bin(n,\pi)$
+
+```{r}
+prob <- dbinom(5, size = 10, prob = 0.5)
+calc.prob <- choose(10,5) * 0.5^10 
+```
+
+### Calculates the cumulative probability
+
+$p(X\leq x)\ where\ X \sim Bin(n,\pi)$
+
+```{r}
+prob <- pbinom(5, size = 10, prob = 0.5)
+l <- c(0,1,2,3,4,5)
+calc.prob <- sum(choose(10,l)*0.5^10)
+```
+
+### Generates n random binomial values
+
+```{r}
+observations <- rbinom(20, 50, 0.5)
+# Generates 20 random binomial values
+# Each value represents the number of successes
+# Probability of success is 0.5
+# Number of trials is 50
+print(observations)
+```
+
+### Plotting the Binomial Distribution
+
+```{r}
+plot(0:10, dbinom(0:10, 10, 0.2), type = "h",
+     xlab = "x", ylab = "P(x)")
+# Plots a binomial distribtution with n = 10
+# number of trials goes 0 - 10
+```
+
+### Finding the maximum likelihood curve
+
+```{r}
+bin <- curve(dbinom(2,3,x), xlim = c(0,1))
+# First number in dbinom is number of successes
+# Second number is number of trials
+# x is the probability of success
+# this dbinom is seeing 2 successes as a function of x
+# where x is the true value of p
+```
+
+### Score test for proportions
+
+```{r}
+prop.test(837, 1810, p=0.50, alternative="two.sided", correct=FALSE)
+```
+
+The test statistic calculated in the code above is as follows:
+
+$$
+Z = \frac{\hat{\pi}-\pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
+$$
+
+Where: $\hat{\pi} = \frac{\sum x_i}{n}$ which is the MLE
+
+and $\pi_0$ is the proposed value of $\pi$ under the null hypothesis
+
+in this example $\hat{\pi} = 837/1810 \approx 0.4624$ and $\pi_0  =0.5$
+
+Calculating the test statistic
+
+```{r}
+z <- ((837/1810)-0.5)/sqrt((0.5*0.5)/1810)
+p.val <- 2 * (1 - pnorm(abs(z)))
+p.val
+```
+
+### Wald Test
+
+The only difference for the Wald test is that we use $\hat{\pi}$ to calculate the standard error rather than $\pi_0$
+
+$$
+Z = \frac{\hat{\pi}-\pi_0}{\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}}
+$$
+
+```{r}
+p.hat <- 837/1810
+wald.z <- (p.hat-0.5)/sqrt((p.hat*(1-p.hat))/1810)
+wald.p.val <- 2 * (1- pnorm(abs(wald.z)))
+print(wald.p.val)
+```
+
+Note:
+
+Use Wald test for large sample sizes and when $\hat{\pi}$ is not close to 0 or 1
+
+Use score test for medium sample sizes
+
+### Confidence Interval
+
+$$
+\hat{\pi} \pm Z_{\alpha/2} \times SE
+$$
+
+Where $SE=\sqrt{\frac{\hat{\pi}(1-\hat{\pi})}{n}}$ for Wald and $SE=\sqrt{\frac{\pi_0(1-\pi_0)}{n}}$ for Score

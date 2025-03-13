@@ -1,0 +1,58 @@
+---
+title: "Chi Squared Test for Independence"
+author: "Nick Wendt"
+output: pdf_document
+---
+
+## This file is meant to remind you what a chi squared test is and how its used
+
+#### Setting up the data
+
+```{R}
+    data <- matrix(c(30, 25, 20, 25), nrow = 2, byrow = FALSE)
+    # nrow means that the matrix has 2 rows
+    # byrow = TRUE means that the vector is filled in from left to right, then down a row
+    # byrow = FALSE means that the vector is filled in top to bottom in the first column, then over one column
+
+    rownames(data) <- c("Male", "Female")
+    colnames(data) <- c("Owns dog (Yes)", "Owns dog (No)")
+
+    data
+```
+
+#### Doing the chi squared test
+
+```{R}
+    chi_sq_test <- chisq.test(data)
+
+    chi_sq_test
+```
+
+If the $p-val < 0.05$ we reject $H_0$ and conclude that there is significant evidence to suggest that there is a relationship between the 2 variables
+
+If the $p-val > 0.05$ we fail to reject $H_0$ and conclude that there is no significant evidence to suggest a relationship between the 2 variables
+
+##### This chi squared test is called the chi squared test of independence:
+
+It tests if the 2 variables being compared are independent of each other\
+1. If we fail to reject, then the variables are independent of each other\
+2. If we reject, then the variables are correlated and one variable can be used for prediction on the other
+
+### Example 1
+
+A survey was conducted to understand the relationship between people's preferred type of pet and their age group.
+
+```{R}
+    ex1 <- matrix(c(50, 70, 30, 40, 50, 40, 10, 20, 40), nrow = 3, byrow = TRUE)
+    colnames(ex1) <- c("Under 30", "30-50", "Over 50")
+    rownames(ex1) <- c("Dogs", "Cats", "Other")
+    ex1
+
+    test <- chisq.test(ex1)
+
+    test
+```
+
+$$
+    \chi^2 = \sum \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
+$$

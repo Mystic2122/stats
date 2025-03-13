@@ -1,0 +1,76 @@
+---
+title: "Contingency Tables"
+author: "Nicholas Wendt"
+date: "2025-03-04"
+output: pdf_document
+---
+
+## Contingency Tables
+
+#### Joint, Marginal and Conditional Probabilities
+
+$\pi_{ij} = P(X=i, Y=j)$
+
+ith row, jth column
+
+$\sum \pi_{ij}=1$ (probabilities of all cells sum up to 1)
+
+These $\pi_{ij}'s$ form the joint distribution of X and Y
+
+$\hat{\pi}_{ij} = n_{ij}/n$ where n is the total sample size and $n_{ij}$ is the number of observations in the ith row and jth column
+
+The marginal distributions are the row and column totals of the joint probabilities
+
+For a 2x2 table, $\pi_{1+}=\pi_{11}+\pi_{12}$ and $\pi_{+1}=\pi_{11}+\pi_{21}$
+
+The conditional probabilities come from holding one of the variables constant. $P(X=1 | Y=1)$ or $P(X=1|Y=2)$
+
+### Sensitivity and Specificity
+
+$Sensitivity = P(X=1|Y=1)$
+
+$Specificity = P(X=2|Y=2)$
+
+### Independence
+
+2 categorical variables X and Y that are *both response variables* are said to be independent if $P(X=i, Y=j) = P(X=i)*P(Y=j)$ for all i, j
+
+$\pi_{ij}=\pi_{i+}*\pi_{+j}$
+
+### Odds Ratio
+
+$odds=\pi/(1-\pi)$
+
+it follows that
+
+$\pi = odds/(odds+1)$
+
+In a 2x2 contingency table if the odds within row 1 are $odds_1 = \pi_1/(1-\pi_1)$
+
+and the odds for the second row are $odds_2 = \pi_2/(1-\pi_2)$
+
+then
+
+$$
+\theta=\frac{odds_1}{odds_2}=\frac{\pi_1/(1-\pi_1)}{\pi_2/(1-\pi_2)}
+$$
+
+Where $\theta$ is known as the odds ratio
+
+#### Properties of the odds ratio
+
+$\theta >1$ if the odds of success are higher in row 1 than in row 2
+
+if $\theta = 1$ then the odds are the same in row 1 as row 2
+
+Another formula for $\theta$
+
+$$
+\theta = \frac{\pi_{11}\pi_{22}}{\pi_{12}\pi_{21}}
+$$
+
+### Inference of Odds
+
+When $\theta = 1,\ \hat{\theta}$ cannot be much smaller since $\hat{\theta} \geq 0$ but it could be much larger
+
+For this reason, we use a logarithmic scale

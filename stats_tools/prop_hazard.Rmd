@@ -1,0 +1,38 @@
+---
+title: "Proportional Hazard"
+author: "Nicholas Wendt"
+date: "2025-03-10"
+output: pdf_document
+---
+
+## What is a Proportional Hazards Model
+
+A proportional hazards model is a class of survivor models. These models show the amount of time passing before an event occurs. The hazard rate at time $t$ is the probability per short time $dt$ that an event will occur between time $t$ and $t +dt$ given that no event has occurred before time $t$ .
+
+### Prop Hazard Model:
+
+$$
+h(t|X)=h_0(t)exp(\beta_1X_1+\beta_2X_2+...+\beta_pX_p)
+$$
+
+-   $h_0(t)$ is the baseline hazard function (the hazard when all predictors are 0)
+
+-   $X_1,X_2, ..., X_p$ are the predictor variables
+
+-   $\beta_1,\beta_2,...,\beta_p$ are the regression coefficients
+
+### Assumptions
+
+The key assumption is that the hazard ratio (relative risk) between two individuals remains constant over time. This means that if $p_1$ has twice the risk as $p_2$ , they will always have twice the risk at any other time.
+
+```{r}
+library(survival)
+data(lung)
+head(lung)
+```
+
+```{r}
+surv_obj <- Surv(time = lung$time, event = lung$status)
+cox_model <- coxph(surv_obj ~ age + sex + ph.ecog, data = lung)
+summary(cox_model)
+```
