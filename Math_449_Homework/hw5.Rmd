@@ -19,3 +19,41 @@ print(contingency.table)
 ```
 
 ## Question 2.21
+
+#### Part a
+
+```{r}
+satisfaction.table <- matrix(data = c(2,4,13,3,2,6,22,4,0,1,15,8,0,3,13,8), byrow = TRUE, ncol = 4, nrow = 4)
+colnames(satisfaction.table) <- c(">25","25-15","15-5","5>")
+rownames(satisfaction.table) <- c("very satisfied","moderately satisfied", "little satisfied","very dissatisfied")
+
+print(satisfaction.table)
+```
+
+```{r}
+satisfaction.chi <- chisq.test(satisfaction.table)
+print(satisfaction.chi)
+print(satisfaction.chi$residuals)
+```
+
+The $\chi^2$ test for independence works poorly on data that has cell counts \< 5. Since our data has cells with low counts, the $\chi^2$ test statistic maybe be inaccurate.
+
+$$
+\chi^2 = \sum_{\forall ij}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}
+$$
+
+If we choose to believe this $\chi^2$ statistic, we would fail to reject since:
+
+$$
+p-val = 0.242 > \alpha = 0.05
+$$
+
+and conclude that job satisfaction and salary are independent.
+
+#### Part b
+
+```{r}
+fisher.test(satisfaction.table)
+```
+
+## Question 2.22
