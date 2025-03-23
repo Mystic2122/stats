@@ -1,0 +1,30 @@
+---
+title: "Confounding Variables"
+author: "Nicholas Wendt"
+date: "2025-03-23"
+output: html_document
+---
+
+### Correlation does not Equal Causation 
+
+Two things can look related, but this can be an illusion created out of randomness.
+
+### Correlation
+
+-   Larger X value resulting in a larger Y value is called positive association
+
+-   Larger X value resulting in a smaller Y value is called negative association
+
+$$
+\rho = \frac{E[(X_i-EX)(Y_i-EY)]}{\sigma_X\sigma_Y}
+$$
+
+$\rho$ is the correlation coefficient
+
+In the numerator, $E[(X_i-EX)(Y_i-EY)] = Cov(X,Y)$
+
+By dividing by $\sigma_X \sigma_Y$ we standardize $\rho$ such that $-1 \leq \rho \leq 1$
+
+Correlation says nothing about how one variable effects the other, it just shows that the they tend to vary in the same (positive) or opposite (negative) direction.
+
+Causation on the other hand, shows how a change in one variable creates a change in the other variable.
