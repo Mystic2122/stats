@@ -1,0 +1,7 @@
+---
+title: "hw_5"
+author: "Nicholas Wendt"
+date: "2025-03-11"
+output: html_document
+---
+
