@@ -19,9 +19,21 @@ GLM's consist of 3 parts
 
 ## Link Function
 
-A link function maps the expected value of the response variable to a linear combination of predictors. It connects the linear predictor, a linear combination of predictors$\nu=\beta_0+\beta_1X_1+ \beta_2X_2+... +\beta_nX_n$ , to the mean of the response variable (which is binary).
+A link function maps the expected value of the response variable to a linear combination of predictors. It connects the linear predictor, a linear combination of predictors $\nu=\beta_0+\beta_1X_1+ \beta_2X_2+... +\beta_nX_n$ , to the mean of the response variable (which is binary).
 
 We would normally assume that the relationship between X and Y, in a linear regression, is linear (duh). For a non-normal response variable (binary, count data) a linear relationship isn't appropriate. A link function transforms the expected value of Y so that it can by modified linearly. This means that given some link function, $g(\nu)$ that can take $E(Y)$ and all transform it to a linear form, $g(E(Y))=\beta_0+\beta_1X_1+\beta_2X_2+...+\beta_pX_p$ . This is important because it ensures that there is a linear relationship between X and Y.
+
+Given the form of the distributions in the exponential family:
+
+$$
+f(x|\theta)=h(x)\cdot g(\theta)exp(\nu(\theta)\cdot T(x))
+$$
+
+-   The link function is actually the same as $\nu(\theta)$ , also called the natural parameter.
+
+-   $g(\theta)$ is a normalizing function that ensures that the distribution integrates to 1
+
+The idea of this is to take the PDF of a distribution from the exponential family and write it in such a way that parameters and random variables are separate.
 
 ### Example Link Functions
 
@@ -29,8 +41,44 @@ We would normally assume that the relationship between X and Y, in a linear regr
 
 -   Logit Link: $log(\frac{E(Y)}{1-E(Y)})$ Used for logistic regression
 
--   Log Link: $g(E(Y) = log(E(Y))$ Used for Poisson regression
+-   Log Link: $g(E(Y)) = log(E(Y))$ Used for Poisson regression
 
-### Logistic Regression
+### Logit Models
 
-Logistic regression models the log-odds of the expected value of the response variable for binary data
+Logit Models are used for binary data classification.
+
+We can show the derivation of the link function by manipulating a Bernoulli distribution such that it is of the standard form of a function within the exponential family
+
+$$
+f(y_i;\pi_i)=\pi_i^{y_i}(1-\pi_i)^{1-y_i} \\
+\quad =(1-\pi_i)[\pi_i/(1-\pi_i)]^{y_i} \\
+=(1-\pi_i)exp \left[y_i \cdot log \left( \frac{\pi_i}{1-\pi_i}\right)\right]
+$$
+
+This gives us the link function:
+
+$$
+log \left( \frac{\pi_i}{1-\pi_i}\right)
+$$
+
+### Loglinear Models
+
+Remember that cell counts in a contingency table are often treated as independent Poisson random variables (number of occurrences of an event given a set amount of time). When you assume events are independent, it means that one event in a specific cell doesn't influence the number of events in another cell.
+
+Given the Poisson Distribution:
+
+$$
+f(x_i;\lambda)=\frac{e^{-\lambda} \lambda^{x_i}}{x_i!}
+$$
+
+we can rewrite it in the form:
+
+$$
+e^{-\lambda}\left(\frac{1}{x_i!}\right)e^{x_ilog(\lambda)}
+$$
+
+giving us $log(\lambda)$ as our link function
+
+## Logistic Regression
+
+Logistic regression models the log-odds of the expected value of the response variable for binary data.
