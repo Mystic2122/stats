@@ -11,6 +11,12 @@ A GLM (generalized linear model) is and extension of a standard linear regressio
 
 It also allows for response variables that are not continuous. Binary outcomes (0,1; Male, Female; Employed, Unemployed; smoker, non-smoker) are modeled using logistic regression. Count data (number of children in a household, number of languages spoken, number of cigarettes smoked in a day) are modeled using Poisson Regression.
 
+GLM's consist of 3 parts
+
+1.  A random component which represents the probability distribution of the response variable (assumed to be normal for linear regression)
+2.  A linear function of the dependent variables used to predict the response variable (like all regressions)
+3.  A link function that describes the relationship between the model and the expected value of the random component.
+
 ## Link Function
 
 A link function maps the expected value of the response variable to a linear combination of predictors. It connects the linear predictor, a linear combination of predictors$\nu=\beta_0+\beta_1X_1+ \beta_2X_2+... +\beta_nX_n$ , to the mean of the response variable (which is binary).
@@ -25,4 +31,6 @@ We would normally assume that the relationship between X and Y, in a linear regr
 
 -   Log Link: $g(E(Y) = log(E(Y))$ Used for Poisson regression
 
-### Variance Function
+### Logistic Regression
+
+Logistic regression models the log-odds of the expected value of the response variable for binary data
