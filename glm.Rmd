@@ -1,0 +1,28 @@
+---
+title: "GLM"
+author: "Nick Wendt"
+date: "2025-04-03"
+output: pdf_document
+---
+
+## What is a GLM
+
+A GLM (generalized linear model) is and extension of a standard linear regression model. It allows for response variables to have error that is **not** normally distributed (poisson, negative binomial).
+
+It also allows for response variables that are not continuous. Binary outcomes (0,1; Male, Female; Employed, Unemployed; smoker, non-smoker) are modeled using logistic regression. Count data (number of children in a household, number of languages spoken, number of cigarettes smoked in a day) are modeled using Poisson Regression.
+
+## Link Function
+
+A link function maps the expected value of the response variable to a linear combination of predictors. It connects the linear predictor, a linear combination of predictors$\nu=\beta_0+\beta_1X_1+ \beta_2X_2+... +\beta_nX_n$ , to the mean of the response variable (which is binary).
+
+We would normally assume that the relationship between X and Y, in a linear regression, is linear (duh). For a non-normal response variable (binary, count data) a linear relationship isn't appropriate. A link function transforms the expected value of Y so that it can by modified linearly. This means that given some link function, $g(\nu)$ that can take $E(Y)$ and all transform it to a linear form, $g(E(Y))=\beta_0+\beta_1X_1+\beta_2X_2+...+\beta_pX_p$ . This is important because it ensures that there is a linear relationship between X and Y.
+
+### Example Link Functions
+
+-   Basic Link: $g(E(Y))=E(Y)$ Used for standard linear regression
+
+-   Logit Link: $log(\frac{E(Y)}{1-E(Y)})$ Used for logistic regression
+
+-   Log Link: $g(E(Y) = log(E(Y))$ Used for Poisson regression
+
+### Variance Function
