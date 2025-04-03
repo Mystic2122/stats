@@ -1,0 +1,75 @@
+---
+title: "Nonlinear Models"
+author: "Nick Wendt"
+date: "2025-04-03"
+output: html_document
+---
+
+## Types of Models
+
+Linear in variables ( $X_{i's}$ ) and parameters ( $\beta_{i's}$ ) :
+
+$$
+Y+\beta_0+\beta_1X_1+\beta_4X_4+\epsilon
+$$
+
+Linear in parameters, nonlinear in variables:
+
+$$
+Y=\beta_0+\beta_1X_1^2+\beta_2logX_2+\beta_3\sqrt{X_3} +\epsilon \newline
+Y=\beta_0+\beta_1Z_1+\beta_2Z_2+\beta_3Z_3 \newline
+Where \quad Z_1=X_1^2,\ Z_2 = logX_2,\ Z_3=\sqrt{X_3}
+$$
+
+Nonlinear in parameters:
+
+$$
+Y=\beta_0 +\beta_1X_1+\beta_2X_2^{\beta_4}+\beta_5\beta_6X_4+\epsilon
+$$
+
+## When to use Nonlinear Models
+
+If two variables have an exponential relationship, then an exponential growth model could be
+
+$$
+Y=\beta_0e^{\beta_1X}+\epsilon
+$$
+
+```{r}
+X <- seq(0, 10, by=0.5)  # Time in years
+Y <- 100 * exp(0.3 * X) + rnorm(length(X), mean=0, sd=50) 
+# rnorm is to simulate random noise (error)  
+
+# Transform Y for linear regression: Take the natural log
+# This IS A LINK FUNCTION
+log_Y <- log(Y)
+
+# Fit a linear model on log-transformed data
+exp_model <- lm(log_Y ~ X)
+
+
+plot(X, Y, main="Exponential Relationship Example",
+     xlab="Time (Years)", ylab="Population")
+
+
+X_seq <- seq(min(X), max(X), length.out=100)
+Y_pred <- exp(predict(exp_model, newdata = data.frame(X = X_seq)))
+lines(X_seq, Y_pred, col="red", lwd=2)
+```
+
+Or if two variables have a logarithmic relationship:
+
+$$
+Y=\beta_0+\beta_1log(X)+\epsilon
+$$
+
+```{r}
+X <- seq(1,100, by = 1)
+Y <- 10 + 5 * log(X) + rnorm(100, mean = 0, sd = 1) 
+
+log.model <- lm(Y ~ log(X))
+
+plot(X, Y, main = "Log Relationship Example", xlab = "Advertising Budget", ylab = "Sales Revenue")
+curve(coef(log.model)[1] + coef(log.model)[2] * log(x), 
+      from=min(X), to=max(X), col="red", lwd=2, add=TRUE)
+```
