@@ -16,9 +16,7 @@ $$
 Linear in parameters, nonlinear in variables:
 
 $$
-Y=\beta_0+\beta_1X_1^2+\beta_2logX_2+\beta_3\sqrt{X_3} +\epsilon \newline
-Y=\beta_0+\beta_1Z_1+\beta_2Z_2+\beta_3Z_3 \newline
-Where \quad Z_1=X_1^2,\ Z_2 = logX_2,\ Z_3=\sqrt{X_3}
+\begin{align*}Y &= \beta_0 + \beta_1 X_1^2 + \beta_2 \log X_2 + \beta_3 \sqrt{X_3} + \epsilon \\Y &= \beta_0 + \beta_1 Z_1 + \beta_2 Z_2 + \beta_3 Z_3 \\\text{where} \quad Z_1 &= X_1^2,\quad Z_2 = \log X_2,\quad Z_3 = \sqrt{X_3}\end{align*}
 $$
 
 Nonlinear in parameters:
@@ -73,3 +71,31 @@ plot(X, Y, main = "Log Relationship Example", xlab = "Advertising Budget", ylab 
 curve(coef(log.model)[1] + coef(log.model)[2] * log(x), 
       from=min(X), to=max(X), col="red", lwd=2, add=TRUE)
 ```
+
+## Loglinear Models
+
+$$
+Y= \beta_0e^{\beta_1X}
+$$
+
+This model is non-linear in parameters and variables
+
+If we take the derivative of this model we get:
+
+$$
+\frac{dY}{dX}=\beta_0e^{\beta_1X}\beta_1
+$$
+
+If we instead take the log of this model, $log(\beta_0 e^{\beta_1X})$ we get $log(\beta_0)+\beta_1X$ which is a linear model. $log(Y)=log(\beta_0)+\beta_1X$ leads to the interpretation of $\beta_1 \times 100 \approx semielasticity$
+
+Rule of thumb: use % for variables that appear in log() form.
+
+In a logarithmic model $Y=\beta_0X^{\beta_1} \rightarrow log(Y)=log(\beta_0)+\beta_1 log(X)$ where $\hat{\beta_1}$ can be interpreted as the elasticity between X and Y. "If there is a 1% change in X, then there is a $\hat{\beta_1}\%$ change in Y.
+
+## Quadratic Models
+
+Model: $Y=\beta_0+\beta_1X_1+\beta_2X_1^2$
+
+The effect of $X_1$ can vary depending on the value of $X_1$ . This can be used to represent diminishing marginal product in a production function
+
+$\beta_1$ can be interpreted as the effect of $X_1$ on Y only when $X_1=0$ (often a weird interpretation)
