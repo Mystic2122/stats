@@ -99,3 +99,22 @@ Model: $Y=\beta_0+\beta_1X_1+\beta_2X_1^2$
 The effect of $X_1$ can vary depending on the value of $X_1$ . This can be used to represent diminishing marginal product in a production function
 
 $\beta_1$ can be interpreted as the effect of $X_1$ on Y only when $X_1=0$ (often a weird interpretation)
+
+### Interaction Terms
+
+Given a model:
+
+$$
+Y=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3 X_1X_2
+$$
+
+The effect of X on Y:
+
+$$
+\frac{dY}{dX_1} = \beta_1+\beta_3X_2 \\
+\frac{dY}{dX_2}=\beta_2+\beta_3X_1
+$$
+
+Effect of $X_1$ can depend on $X_2$ and vice versa
+
+$\beta_3$ may indicate synergies or antagonism between the effects of regressors
