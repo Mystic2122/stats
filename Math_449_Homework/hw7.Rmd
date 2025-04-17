@@ -1,0 +1,101 @@
+---
+title: "HW7"
+author: "Nicholas Wendt"
+date: "2025-04-16"
+output: pdf_document
+---
+
+Questions: 3.11, 4.1, 4.5
+
+## Question 3.11
+
+```{r}
+treat.a <- c(8, 7, 6, 6, 3, 4, 7, 2, 3, 4)
+treat.b <- c(9, 9, 8, 14, 8, 13, 11, 5, 7, 6)
+
+
+treatment <- c(rep("A", 10), rep("B", 10))
+
+#X = 1 for treatment b
+#X = 0 for treatment a
+
+x <- ifelse(treatment == "B", 1, 0)
+treat.total <- c(treat.a, treat.b)
+
+treat.data <- data.frame(treat.total, x)
+
+treat.model <- glm(treat.total ~ x, family = poisson, data = treat.data)
+summary(treat.model)
+exp(coef(treat.model))
+```
+
+The prediction equation is $number\ of\ imperfections = 1.6094 + 0.5878 x$ where $x=1$ for treatment b and $x=0$ for treatment a. $\hat{\beta} = e^{0.5878} \approx 1.8$ which means the rate of imperfections under treatment b is around 1.8 times higher than the rate of imperfections for treatment a. On average, wafers treated with treatment b will have 80% more imperfections compared to wafers treated with treatment a.
+
+## Question 4.1
+
+```{r}
+LI <- c(8,8,10,10,12,12,12,14,14,14,16,16,16,18,20,20,20,22,22,24,26,28,32,34,38,38,38)
+y <- c(0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,1,1,0,1,1,1,0)
+
+cancer.data <- data.frame(y,LI)
+colnames(cancer.data) <- c("y", "LI")
+cancer.data
+```
+
+#### Part a
+
+```{r}
+cancer.model <- glm(y ~ LI, family = binomial, data = cancer.data)
+predict(cancer.model, newdata = data.frame(LI = 26), type = "response")
+```
+
+#### Part b
+
+```{r}
+exp(coef(cancer.model)[2])
+
+```
+
+#### Part c
+
+$\hat{P}(Y=1)$ changes over the range at a rate of $\beta \pi(x)(1-\pi(x))$ . At the median effect level, when $x=-\alpha/\beta$ , the rate of change is $0.25\beta$ .
+
+```{r}
+quantile(cancer.data$LI, probs = c(0.25, 0.75), na.rm = TRUE)
+```
+
+```{r}
+p25 <- predict(cancer.model, newdata = data.frame(LI = 13), type = "response")
+
+p75 <- predict(cancer.model, newdata = data.frame(LI = 25), type = "response")
+
+change <- p75 - p25
+change
+```
+
+This means that the difference in probability between 13% labeled cells achieving remission and 25% labeled cells achieving remission is 0.33
+
+#### Part d
+
+```{r}
+beta <- coef(cancer.model)[2]
+estimate.y <- predict(cancer.model, newdata = data.frame(LI = 8),type = "response")
+rate.of.change <- beta*estimate.y*(1-estimate.y)
+(rate.of.change)
+```
+
+#### Part e
+
+```{r}
+beta <- coef(cancer.model)["LI"]
+
+p.hat <- predict(cancer.model, type = "response")
+marginal.effects <- beta * p.hat * (1 - p.hat)
+
+average.marginal.effect <- mean(marginal.effects)
+average.marginal.effect
+```
+
+The estimated average marginal effect is about 0.0226 meaning that a 1 unit increase in LI leads to a 2.26% increase in probability that Y=1. Points closer to the middle will have a marginal effect larger than 2.26% while points closer to the ends will have a marginal effect less than 2.26%.
+
+## Question 4.5

@@ -1,0 +1,161 @@
+---
+title: "HW6"
+author: "Nicholas Wendt"
+date: "2025-04-08"
+output: pdf_document
+---
+
+Questions: 3.3, 3.5, 3.8
+
+## Question 3.3
+
+#### Part a
+
+The prediction equation is: $E(Y)=0.00255+0.00109x$
+
+Where x = mother's alcohol consumption and Y = whether a baby has sex organ malformation
+
+The intercept is the probability of a baby having a sex organ malformation when the mother doesn't consume alcohol during pregnancy
+
+The slope is the increase in probability of a baby having a sex organ malformation due to a 1 unit increase in alcohol consumption
+
+#### Part b
+
+(i) 
+
+```{r}
+model.0 <- 0.00255+0.00109*0
+model.7 <- 0.00255+0.00109*7
+print(model.0)
+print(model.7)
+```
+
+(ii) 
+
+```{r}
+rr <- model.7/model.0
+rr
+```
+
+The a baby is about 4 times more likely to have a sex organ malformation when the mother consumes 7 units of alcohol compared to a baby who's mother consumed no alcohol.
+
+#### Part c
+
+```{r}
+alcohol.consumption <- matrix(data = c(17066,48,14464,38,788,5,126,1,37,1), byrow = TRUE, nrow = 5, ncol = 2)
+colnames(alcohol.consumption) <- c("Absent", "Present")
+rownames(alcohol.consumption) <- c("0","<1","1-2","3-5",">5")
+alcohol.consumption
+new.scores <- c(0,1,2,3,4)
+old.scores <- c(0,0.5,1.5,4,7)
+alcohol1=data.frame(alcohol.consumption,old.scores, new.scores)
+alcohol1
+```
+
+```{r}
+alc.model.new = glm( cbind(Present, Absent) ~ new.scores,family=binomial(link = "identity"), data=alcohol1 )
+alc.model.old <- glm( cbind(Present, Absent) ~ old.scores,family=binomial(link = "identity"), data=alcohol1)
+summary(alc.model.new)
+summary(alc.model.old)
+```
+
+```{r}
+model.0 <- 0.0025977+0.0005044*0
+model.7 <- 0.0025977+0.0005044*7
+rr <- model.7/model.0
+rr
+
+(fit_old=fitted(alc.model.old))
+(fit_new=fitted(alc.model.new))
+
+rr_old=fit_old[5]/fit_old[1]
+rr_new=fit_new[5]/fit_old[1]
+rr_old
+rr_new
+```
+
+#### Part d
+
+```{r}
+altered.alc <- matrix(data = c(17066,48,14464,38,788,5,126,1), byrow = TRUE, nrow = 4, ncol = 2)
+colnames(altered.alc) <- c("Absent", "Present")
+rownames(altered.alc) <- c("0","<1","1-2","3-5")
+
+scores <- c(0,0.5,1.5,4)
+alter.w.scores <- data.frame(altered.alc, scores)
+altered.model = glm( cbind(Present, Absent) ~ scores,family=binomial(link = "identity"), data=alter.w.scores )
+summary(altered.model)
+```
+
+```{r}
+altered.0 <- 0.0026026 + 0.0008184*0
+altered.7 <- 0.0026026 + 0.0008184*7
+rr <- altered.7/altered.0
+rr
+```
+
+The model is sensitive to this change.
+
+## Question 3.5
+
+```{r}
+crab <- read.table("https://users.stat.ufl.edu/~aa/cat/data/Crabs.dat", header = TRUE)
+crab
+```
+
+#### Part a
+
+```{r}
+crab.model <- glm(y ~ weight, data = crab, family = binomial(link = "identity"), start = c(0.01, 0.001))
+summary(crab.model)
+```
+
+```{r}
+predict(crab.model, newdata = data.frame(weight = 5.2))
+predict
+```
+
+The linear model predicts that a crab with a width of 5.2 will have a satellite
+
+#### Part b
+
+```{r}
+crab.log <- glm(y ~ weight, data = crab, family = binomial)
+summary(crab.log)
+```
+
+```{r}
+predict(crab.log, newdata = data.frame(weight = 5.2), type = "response")
+```
+
+the logistic regression predicts that there is a %99.68% chance for a crab with width 5.2 to have a satellite.
+
+## Question 3.8
+
+```{r}
+snoring <- matrix(c(24,1355,35,603,21,192,30,224), nrow = 4, ncol = 2, byrow = TRUE)
+colnames(snoring) <- c("Yes","No")
+rownames(snoring) <- c("Never", "Occasional", "Nearly every night", "Every night")
+snoring
+```
+
+```{r}
+scores <- c(0,2,4,5)
+snoring.df <- data.frame(snoring, scores)
+snoring.model <- glm(cbind(Yes,No) ~ scores, data = snoring.df, family = binomial(link = "logit"))
+summary(snoring.model)
+```
+
+$H_0: \beta_1 = 0$
+
+$H_a: \beta_1 \neq 0$
+
+Reject $H_0$ since p-val = $1.94e-15 < \alpha = 0.05$
+
+Snoring is statistically significant when predicting heart disease
+
+```{r}
+confint(snoring.model)
+```
+
+Since 0 isn't in the CI we can reject.

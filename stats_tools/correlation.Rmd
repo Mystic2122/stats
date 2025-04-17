@@ -5,7 +5,7 @@ date: "2025-03-23"
 output: html_document
 ---
 
-### Correlation does not Equal Causation 
+### Correlation does not Equal Causation
 
 Two things can look related, but this can be an illusion created out of randomness.
 
