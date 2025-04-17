@@ -4,7 +4,7 @@ This formula was inspired by a soft lock in the gen 3 pokemon games.
 
 Every pokemon has a randomly generated id that is 16 bits long.
 At the lottery corner, every day you can check your pokemon's id against the random id.
-If the number is a perfect match, you win a master ball.\n\n
+If the number is a perfect match, you win a master ball.<br>
 If you only have one pokemon, the chance of your number being a perfect match on any given day is:
 
 $$
@@ -13,7 +13,7 @@ $$
 
 Now the chance of selecting the wrong number is $\frac{65535}{65536}$ .
 
-What is the probability of getting a perfect match in 65536 tries?
+What is the probability of getting a perfect match in 65536 tries?<br>
 
 ## Answer
 
