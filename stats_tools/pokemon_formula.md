@@ -11,7 +11,7 @@ $$
 \frac{1}{65536}
 $$
 
-Now the chance of your pokemon nor having the correct number is: $\frac{65535}{65536}$ .
+Now the chance of your pokemon nor having the correct number is: $\frac{65535}{65536}$
 
 What is the probability of getting a perfect match in 65536 tries?<br><br>
 
