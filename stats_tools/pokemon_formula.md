@@ -1,4 +1,4 @@
-### Pokemon Formula
+# Pokemon Formula
 
 This formula was inspired by a soft lock in the gen 3 pokemon games.
 
@@ -15,7 +15,7 @@ Now the chance of selecting the wrong number is $\frac{65535}{65536}$ .
 
 What is the probability of getting a perfect match in 65536 tries?
 
-#### Answer
+## Answer
 
 The probability of **NOT** getting a perfect match in 65536 tries is:
 
@@ -29,7 +29,7 @@ $$
 1-e^{-1}=0.6321
 $$
 
-#### Where did e come from?
+### Where did e come from?
 
 $$
 \lim\limits_{n \to \infty}\left( 1-\frac{1}{n}\right)^n=\frac{1}{e}
