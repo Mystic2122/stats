@@ -32,11 +32,11 @@ $$
 #### Where did e come from?
 
 $$
-lim_{n-->\infty}\left( 1-\frac{1}{n}\right)^n=\frac{1}{e}
+\lim\limits_{n \to \infty}\left( 1-\frac{1}{n}\right)^n=\frac{1}{e}
 $$
 
 $$
-P(no\ correct\ guesses) = lim_{n-->\infty}\left( 1-\frac{1}{65536}\right)^65536 \approx \frac{1}{e}
+P(no\ correct\ guesses) = \lim\limits_{n \to \infty}\left( 1-\frac{1}{65536}\right)^65536 \approx \frac{1}{e}
 $$
 
 then
