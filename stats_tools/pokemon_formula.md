@@ -20,7 +20,7 @@ What is the probability of getting a perfect match in 65536 tries?<br><br>
 The probability of **NOT** getting a perfect match in 65536 tries is:
 
 $$
-\left(\frac{65535}{65536}\right)^{65536} \approx e^{-1}
+\left(\frac{65535}{65536}\right)^{65536} \approx \frac{1}{e}
 $$
 
 Then the probability of getting a perfect match at least once is:
