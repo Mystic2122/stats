@@ -26,7 +26,7 @@ $$
 Then the probability of getting a perfect match at least once is:
 
 $$
-1-e^{-1}=0.6321
+1-\frac{1}{e}=0.6321
 $$
 
 ### Where did e come from?
