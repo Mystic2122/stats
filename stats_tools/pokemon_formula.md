@@ -3,8 +3,8 @@
 This formula was inspired by a soft lock in the gen 3 pokemon games.
 
 Every pokemon has a randomly generated id that is 16 bits long.
-At the lottery corner, every day you can check your pokemon's id against the random id
-If the number is a perfect match, you win a master ball.
+At the lottery corner, every day you can check your pokemon's id against the random id.
+If the number is a perfect match, you win a master ball.\n\n
 If you only have one pokemon, the chance of your number being a perfect match on any given day is:
 
 $$
