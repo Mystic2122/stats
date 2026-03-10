@@ -1,0 +1,42 @@
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(218, 53, 53);
+    width: 100vw;
+    margin-left: 0;
+    /* Title color */
+    color: rgba(0, 46, 114, 0.973);
+}
+
+nav {
+    display: flex;
+    width: 100vw;
+    justify-content: space-evenly;
+    background-color: brown;
+    font-size: large;
+}
+
+
+/* nav colors */
+nav a {
+    text-decoration: none;
+    color: beige;
+}
+
+nav a:hover {
+    color: rgb(74, 74, 255);
+    transition: 50ms;
+}
+
+nav a.visited {
+    color: beige;
+}
+
+
+/* body styles */
+body {
+    margin: 0;
+    background-color: rgb(255, 216, 185);
+}
