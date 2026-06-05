@@ -8,6 +8,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
+    <>
     <header>
       <h1>Welcome to Stats Haven</h1>
       
@@ -17,6 +18,32 @@ function App() {
         <a href="/calculators">Calculators</a>
       </nav>
     </header>
+
+    <main>
+      <div className='topic-grid'>
+        <div className='topic-card'>Probability</div>
+        <div className='topic-card'>Statistical Inference</div>
+        <div className='topic-card'>Regression</div>
+        <div className='topic-card'>Machine Learning</div>
+      </div>
+
+      <section className='notes-row'>
+        <div className='notes-row-title'>
+          Recent Notes
+        </div>
+
+        <div className='note-card'>
+          <img src="prob-background.jpg"/>
+          <div className='divider'></div>
+          <p>Joint Distributions</p> 
+        </div>
+
+        /* */
+
+      </section>
+
+    </main>
+    </>
   )
 }
 
