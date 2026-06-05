@@ -9,7 +9,6 @@ function App() {
 
   return (
     <>
-    <>
     <header>
       <h1>Welcome to Stats Haven</h1>
       
