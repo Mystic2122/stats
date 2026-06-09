@@ -1,42 +1,49 @@
 import { useState } from "react";
+import PValueCalculator from "../calculators/PValueCalculator";
+
 
 export default function Calculators() {
-    const calculators = [
-        {
-            id: "pvalue",
-            name: "P-Value Calculator"
-        }
-    ]
+  const [selected, setSelected] = useState(null);
 
-    const [selected, setSelected] = useState(null);
+  const calculators = [
+    {
+      id: "pvalue",
+      name: "P-Value Calculator",
+      component: PValueCalculator
+    }
+  ];
+
+  if (selected) {
+    const SelectedComponent = calculators.find(
+      (c) => c.id === selected
+    )?.component;
 
     return (
-    <>
-        <header>
-        <h2>Calculators</h2>
-        </header>
+      <div className="calculators-page">
+        
 
-        {selected === null && (
-        <div>
-            {calculators.map((calc) => (
-            <button
-                key={calc.id}
-                onClick={() => setSelected(calc.id)}
-            >
-                {calc.name}
-            </button>
-            ))}
+        <div className="calculator-wrapper">
+          <SelectedComponent />
         </div>
-        )}
+      </div>
+    );
+  }
 
-        {selected === "pvalue" && (
-        <div>
-            <h3>P-Value Calculator</h3>
-            <button onClick={() => setSelected(null)}>
-            Back
-            </button>
-        </div>
-        )}
-    </>
-    )
+  return (
+    <div className="calculators-page">
+      <h2 className="calculators-title">Calculators</h2>
+
+      <div className="calculator-grid">
+        {calculators.map((calc) => (
+          <button
+            key={calc.id}
+            className="calculator-select-button"
+            onClick={() => setSelected(calc.id)}
+          >
+            {calc.name}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 }

@@ -1,5 +1,7 @@
 import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
+import Notes from "./pages/Notes"
+import Calculators from "./pages/Calculators"
 
 function Layout({ children }) {
   return (
@@ -42,15 +44,14 @@ function Home() {
   );
 }
 
-function Calculators() {
-  return <div>Calculators page not wired yet</div>;
-}
+
 
 export default function App() {
   return (
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/notes" element={<Notes />} />
         <Route path="/calculators" element={<Calculators />} />
       </Routes>
     </Layout>

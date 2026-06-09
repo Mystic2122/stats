@@ -1,0 +1,73 @@
+.calculator-container {
+  color: black;
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* BIG TITLE */
+.calculator-container h3 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+/* ROWS (distribution selector etc.) */
+.calculator-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+/* BIG BUTTONS */
+.calculator-row button,
+.calculator-button {
+  padding: 12px 18px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* INPUTS */
+.calculator-input {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* MAIN ACTION BUTTON */
+.calculator-button {
+  margin-top: 10px;
+}
+
+/* RESULT */
+.calculator-result {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.dist-button {
+  padding: 12px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: white;
+  transition: 0.15s ease;
+  color: black;
+}
+
+.dist-button:hover {
+  transform: scale(1.05);
+}
+
+.dist-button.active {
+  background: #2b6fff;
+  color: white;
+  border-color: #2b6fff;
+}
+
+
+
