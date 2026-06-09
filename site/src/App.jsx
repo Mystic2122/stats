@@ -1,59 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { Routes, Route, Link } from "react-router-dom";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Layout({ children }) {
   return (
     <>
-    <header>
-      <h1>Welcome to Stats Haven</h1>
-      
-      <nav>
-        <a href="/">Home</a>
-        <a href="/notes">Notes</a>
-        <a href="/calculators">Calculators</a>
-      </nav>
-    </header>
+      <header>
+        <h1>Welcome to Stats Haven</h1>
 
-    <main>
-      <div className='topic-grid'>
-        <div className='topic-card'>Probability</div>
-        <div className='topic-card'>Statistical Inference</div>
-        <div className='topic-card'>Regression</div>
-        <div className='topic-card'>Machine Learning</div>
-      </div>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/notes">Notes</Link>
+          <Link to="/calculators">Calculators</Link>
+        </nav>
+      </header>
 
-      <section className='notes-row'>
-        <div className='notes-row-title'>
-          Recent Notes
-        </div>
-
-        <div className='note-card'>
-          <img src="prob-background.jpg"/>
-          <div className='divider'></div>
-          <p>Joint Distributions</p> 
-        </div>
-
-        
-
-      </section>
-
-    </main>
+      {children}
     </>
-  )
+  );
 }
 
-/* 
-This gets correct number of note cards that fit in the row
-{notes.map(note => (
-    <div className="note-card" key={note.id}>
-      ...
-    </div>
-  ))}
-*/
+function Home() {
+  return (
+    <main>
+      <div className="topic-grid">
+        <div className="topic-card">Probability</div>
+        <div className="topic-card">Statistical Inference</div>
+        <div className="topic-card">Regression</div>
+        <div className="topic-card">Machine Learning</div>
+      </div>
 
-export default App
+      <section className="notes-row">
+        <div className="notes-row-title">Recent Notes</div>
+
+        <div className="note-card">
+          <img src="prob-background.jpg" />
+          <div className="divider"></div>
+          <p>Joint Distributions</p>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function Calculators() {
+  return <div>Calculators page not wired yet</div>;
+}
+
+export default function App() {
+  return (
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/calculators" element={<Calculators />} />
+      </Routes>
+    </Layout>
+  );
+}
