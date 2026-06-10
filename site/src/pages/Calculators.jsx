@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PValueCalculator from "../calculators/PValueCalculator";
+import "./pageStyles.css";
 
 
 export default function Calculators() {
@@ -31,7 +32,7 @@ export default function Calculators() {
 
   return (
     <div className="calculators-page">
-      <h2 className="calculators-title">Calculators</h2>
+      
 
       <div className="calculator-grid">
         {calculators.map((calc) => (
