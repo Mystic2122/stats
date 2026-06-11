@@ -1,34 +1,19 @@
-import { useState } from "react";
-import PValueCalculator from "../calculators/PValueCalculator";
+import { Link } from "react-router-dom";
 import "./pageStyles.css";
 
 
 export default function Calculators() {
-  const [selected, setSelected] = useState(null);
+  
 
   const calculators = [
     {
       id: "pvalue",
       name: "P-Value Calculator",
-      component: PValueCalculator
+      path: "/calculators/p-value"
     }
   ];
 
-  if (selected) {
-    const SelectedComponent = calculators.find(
-      (c) => c.id === selected
-    )?.component;
 
-    return (
-      <div className="calculators-page">
-        
-
-        <div className="calculator-wrapper">
-          <SelectedComponent />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="calculators-page">
@@ -36,13 +21,13 @@ export default function Calculators() {
 
       <div className="calculator-grid">
         {calculators.map((calc) => (
-          <button
+          <Link
             key={calc.id}
+            to={calc.path}
             className="calculator-select-button"
-            onClick={() => setSelected(calc.id)}
           >
             {calc.name}
-          </button>
+          </Link>
         ))}
       </div>
     </div>

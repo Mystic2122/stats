@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { jStat } from "jstat";
 import "./calculatorStyles.css";
+import zTestStat from "../../assets/zTestStat.png"
+import propZTestStat from "../../assets/propZtestStat.png"
 
 export default function PValueCalculator() {
   const [dist, setDist] = useState("z");
@@ -178,6 +180,17 @@ export default function PValueCalculator() {
                     value={sd}
                     onChange={(e) => setSd(e.target.value)}
                   />
+                  <button className="calculate-button" onClick={calculate}>
+                    Calculate
+                  </button>
+
+                  {pValue !== null && (
+                    <div className="calculator-result">P-value: {pValue.toFixed(6)}</div>
+                  )}
+                  <div className="extra-info-z">
+                    <img src={zTestStat} alt="Z Test Statistic" />
+                    <img src={propZTestStat} />
+                  </div>
                 </div>
               );
             case "t":
@@ -202,6 +215,13 @@ export default function PValueCalculator() {
                       onChange={(e) => setDf(e.target.value)}
                     />
                   </div>
+                  <button className="calculate-button" onClick={calculate}>
+                    Calculate
+                  </button>
+
+                  {pValue !== null && (
+                    <div className="calculator-result">P-value: {pValue.toFixed(6)}</div>
+                  )}
                 </div>
               );
             case "f":
@@ -229,18 +249,18 @@ export default function PValueCalculator() {
                     value={df2}
                     onChange={(e) => setDf2(e.target.value)}
                   />
+                  <button className="calculate-button" onClick={calculate}>
+                    Calculate
+                  </button>
+
+                  {pValue !== null && (
+                    <div className="calculator-result">P-value: {pValue.toFixed(6)}</div>
+                  )}
                 </div>
               );
             case "chi":
               return (
                 <div className="layout-chi">
-                  <input
-                    className="calculator-input chi-df"
-                    type="number"
-                    placeholder="df"
-                    value={df}
-                    onChange={(e) => setDf(e.target.value)}
-                  />
                   <input
                     className="calculator-input chi-stat"
                     type="text"
@@ -249,6 +269,21 @@ export default function PValueCalculator() {
                     value={x}
                     onChange={(e) => setX(e.target.value)}
                   />
+                  <input
+                    className="calculator-input chi-df"
+                    type="number"
+                    placeholder="df"
+                    value={df}
+                    onChange={(e) => setDf(e.target.value)}
+                  />
+                  <button className="calculate-button" onClick={calculate}>
+                    Calculate
+                  </button>
+
+                  {pValue !== null && (
+                    <div className="calculator-result">P-value: {pValue.toFixed(6)}</div>
+                  )}
+                  
                 </div>
               );
             default:
@@ -257,13 +292,8 @@ export default function PValueCalculator() {
         })()}
       </div>
 
-      <button className="calculate-button" onClick={calculate}>
-        Calculate
-      </button>
-
-      {pValue !== null && (
-        <div className="calculator-result">P-value: {pValue.toFixed(6)}</div>
-      )}
+      
+      
     </div>
   );
 }

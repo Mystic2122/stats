@@ -2,6 +2,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Notes from "./pages/Notes"
 import Calculators from "./pages/Calculators"
+import PValueCalculator from "./calculators/pvalue/PValueCalculator";
 
 function Layout({ children }) {
   return (
@@ -53,6 +54,10 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/notes" element={<Notes />} />
         <Route path="/calculators" element={<Calculators />} />
+        <Route
+          path="/calculators/p-value"
+          element={<PValueCalculator />}
+        />
       </Routes>
     </Layout>
   );
