@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { jStat } from "jstat";
-import { InlineMath, BlockMath } from "react-katex";
-import 'katex/dist/katex.min.css'
+import MathMarkdown from "../../components/MathMarkdown";
 import "./calculatorStyles.css";
 import zTestStat from "../../assets/zTestStat.png"
 import propZTestStat from "../../assets/propZtestStat.png"
+
+const popMeanTestRules = `
+Use when X is normally distributed or when n &gt; 30 with $\\sigma$ known
+`;
+
+const propZTestRules = `
+Use when $n\\hat{p} \\text{ and } n(1-\\hat{p}) \\geq 10$
+`;
 
 export default function PValueCalculator() {
   const [dist, setDist] = useState("z");
@@ -194,14 +201,16 @@ export default function PValueCalculator() {
                       <h5>Population Mean Test</h5>
                       <img src={zTestStat} alt="Z Test Statistic" />
                       <br></br>
-                      <span>Use when X is normally distributed or when n &gt; 30 with σ known</span>
+                      <div className="pop-mean-test-text">
+                        <MathMarkdown content={popMeanTestRules} />
+                      </div>
                     </div>
                     <div className="z-stat-img">
                       <h5>Population Proportion Test</h5>
                       <img src={propZTestStat} />
                       <br></br>
                       <div>
-                        Use when <InlineMath math={'n \\hat{p} \\text{ and } n(1- \\hat{p}) \\geq 10'} />
+                        <MathMarkdown content={propZTestRules} />
                       </div>
                     </div>
                   </div>

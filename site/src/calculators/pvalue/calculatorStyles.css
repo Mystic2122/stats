@@ -246,3 +246,8 @@
   max-height: min-content;
 
 }
+
+.pop-mean-test-text {
+  max-width: 50%;
+  justify-self: center;
+}
