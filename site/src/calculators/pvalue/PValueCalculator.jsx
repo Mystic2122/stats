@@ -4,6 +4,8 @@ import MathMarkdown from "../../components/MathMarkdown";
 import "./calculatorStyles.css";
 import zTestStat from "../../assets/zTestStat.png"
 import propZTestStat from "../../assets/propZtestStat.png"
+import tTestStat from "../../assets/tTestStat.png"
+import s from "../../assets/s.png"
 
 const popMeanTestRules = `
 Use when X is normally distributed or when n &gt; 30 with $\\sigma$ known
@@ -12,6 +14,14 @@ Use when X is normally distributed or when n &gt; 30 with $\\sigma$ known
 const propZTestRules = `
 Use when $n\\hat{p} \\text{ and } n(1-\\hat{p}) \\geq 10$
 `;
+
+const tTestRules = `
+Use when population standard deviation is unknown 
+`
+
+const sText = `
+S is an unbiased estimator of $\\sigma$ when we lose a degree of freedom estimating $\\bar{x}$
+`
 
 export default function PValueCalculator() {
   const [dist, setDist] = useState("z");
@@ -196,7 +206,7 @@ export default function PValueCalculator() {
                   {pValue !== null && (
                     <div className="calculator-result">P-value: {pValue.toFixed(6)}</div>
                   )}
-                  <div className="extra-info-z">
+                  <div className="extra-info">
                     <div className="z-stat-img">
                       <h5>Population Mean Test</h5>
                       <img src={zTestStat} alt="Z Test Statistic" />
@@ -209,7 +219,7 @@ export default function PValueCalculator() {
                       <h5>Population Proportion Test</h5>
                       <img src={propZTestStat} />
                       <br></br>
-                      <div>
+                      <div className="prop-z-test-text">
                         <MathMarkdown content={propZTestRules} />
                       </div>
                     </div>
@@ -238,13 +248,31 @@ export default function PValueCalculator() {
                       onChange={(e) => setDf(e.target.value)}
                     />
                   </div>
-                  <button className="calculate-button" onClick={calculate}>
+                  <button className="t-test-calculate-button" onClick={calculate}>
                     Calculate
                   </button>
 
                   {pValue !== null && (
                     <div className="calculator-result">P-value: {pValue.toFixed(6)}</div>
                   )}
+                  <div className="extra-info">
+                    <div className="t-stat-img">
+                      <h5>T test</h5>
+                      <img src={tTestStat} alt="T Test Statistic" />
+                      <br></br>
+                      <div className="t-test-text">
+                        <MathMarkdown content={tTestRules} />
+                      </div>
+                    </div>
+                    <div className="t-stat-img">
+                      <h5>Sample Standard Deviation</h5>
+                      <img src={s} className="s-image" alt="Sample Standard Deviation" />
+                      <br></br>
+                      <div className="t-test-text">
+                        <MathMarkdown content={sText} />
+                      </div>
+                    </div>
+                  </div>  
                 </div>
               );
             case "f":

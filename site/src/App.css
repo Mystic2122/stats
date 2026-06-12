@@ -13,10 +13,11 @@ header {
 
 nav {
     display: flex;
-    width: 100vw;
+    width: 100%;
     justify-content: space-evenly;
     background-color: brown;
     
+    overflow: hidden;
 }
 
 
@@ -46,6 +47,7 @@ nav a.visited {
 body {
     margin: 0;
     background-color: rgb(207, 138, 81);
+    max-height: 100%;
 
 }
 
