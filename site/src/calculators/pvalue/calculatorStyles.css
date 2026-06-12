@@ -238,6 +238,7 @@
   justify-content: space-evenly;
   background-color: rgba(110, 45, 1, 0.363);
   padding: 2rem;
+  padding-top:0;
   max-width: 100vw;
   padding-right: 100px;
 }
@@ -248,7 +249,7 @@
 }
 
 .pop-mean-test-text {
-  max-width: 50%;
+  max-width: 90%;
   justify-self: center;
   font-size: 22px;
   font-weight: 500;
@@ -264,10 +265,7 @@
   font-size: 25px;
 }
 
-.t-stat-img h5 {
-  font-size: 25px;
 
-}
 
 .t-test-text {
   margin-top: 10px;
@@ -297,4 +295,41 @@
   cursor: pointer;
   max-width: 80%;
   align-self: center;
+}
+
+.extra-info-f {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: space-evenly;
+  background-color: rgba(110, 45, 1, 0.363);
+  padding: 2rem;
+  padding-top: 0;
+
+  width: 185%;
+}
+
+.extra-info-chi {
+  display: flex;
+  
+  margin-top: 1rem;
+  justify-content: space-evenly;
+  background-color: rgba(110, 45, 1, 0.363);
+  padding: 2rem;
+  max-width: 100vw;
+  padding-right: 100px;
+  padding-top: 0;
+}
+
+
+.chi-test-stat {
+  scale: 150%;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  padding-top: 0;
+}
+
+.chi-test-text {
+  margin-top: 1rem;
+  font-size: 20px;
+  font-weight: bold;
 }

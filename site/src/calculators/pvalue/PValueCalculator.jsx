@@ -2,10 +2,15 @@ import { useState } from "react";
 import { jStat } from "jstat";
 import MathMarkdown from "../../components/MathMarkdown";
 import "./calculatorStyles.css";
-import zTestStat from "../../assets/zTestStat.png"
-import propZTestStat from "../../assets/propZtestStat.png"
-import tTestStat from "../../assets/tTestStat.png"
-import s from "../../assets/s.png"
+import zTestStat from "../../assets/zTestStat.png";
+import propZTestStat from "../../assets/propZtestStat.png";
+import tTestStat from "../../assets/tTestStat.png";
+import s from "../../assets/s.png";
+import f from "../../assets/fTestStat.png";
+import fDef from "../../assets/fTestStat2.png";
+import chiDef from "../../assets/chiDef.png";
+import chiTestStat from "../../assets/chiTestStat.png";
+import { MarkdownHooks } from "react-markdown";
 
 const popMeanTestRules = `
 Use when X is normally distributed or when n &gt; 30 with $\\sigma$ known
@@ -17,10 +22,27 @@ Use when $n\\hat{p} \\text{ and } n(1-\\hat{p}) \\geq 10$
 
 const tTestRules = `
 Use when population standard deviation is unknown 
-`
+`;
 
 const sText = `
 S is an unbiased estimator of $\\sigma$ when we lose a degree of freedom estimating $\\bar{x}$
+`;
+
+const fText1 = `
+$df_1 = n - 1$  
+$df_2 = m -1$
+`;
+
+const fText2 = `
+An F distribution is defined a a ratio of $\\chi ^2$ random variables divided by their degrees of freedom
+`;
+
+const chiText1 = `
+Used for goodness of fit tests
+`;
+
+const chiText2 = `
+This test statistic allows for inference on population variance
 `
 
 export default function PValueCalculator() {
@@ -307,6 +329,24 @@ export default function PValueCalculator() {
                   {pValue !== null && (
                     <div className="calculator-result">P-value: {pValue.toFixed(6)}</div>
                   )}
+                  <div className="extra-info-f">
+                    <div className="t-stat-img">
+                      <h5>F Test Statistic</h5>
+                      <img src={f} />
+                      <br></br>
+                      <div className="t-test-text">
+                        <MathMarkdown content={fText1} />
+                      </div>
+                    </div>
+                    <div className="t-stat-img">
+                      <h5>Definition of F Distribution</h5>
+                      <img src={fDef} className="s-image" alt="Sample Standard Deviation" />
+                      <br></br>
+                      <div className="t-test-text">
+                        <MathMarkdown content={fText2} />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               );
             case "chi":
@@ -334,6 +374,24 @@ export default function PValueCalculator() {
                   {pValue !== null && (
                     <div className="calculator-result">P-value: {pValue.toFixed(6)}</div>
                   )}
+                  <div className="extra-info-chi">
+                    <div className="t-stat-img">
+                      <h5>χ² Test Statistic</h5>
+                      <img src={chiTestStat} className="chi-test-stat"/>
+                      <br></br>
+                      <div className="chi-test-text">
+                        <MathMarkdown content={chiText1} />
+                      </div>
+                    </div>
+                    <div className="t-stat-img">
+                      <h5>Definition of χ² Distribution</h5>
+                      <img src={chiDef} className="s-image" alt="Sample Standard Deviation" />
+                      <br></br>
+                      <div className="t-test-text">
+                        <MathMarkdown content={chiText2} />
+                      </div>
+                    </div>
+                  </div>
                   
                 </div>
               );
