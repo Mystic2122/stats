@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { jStat } from "jstat";
+import { InlineMath, BlockMath } from "react-katex";
+import 'katex/dist/katex.min.css'
 import "./calculatorStyles.css";
 import zTestStat from "../../assets/zTestStat.png"
 import propZTestStat from "../../assets/propZtestStat.png"
@@ -188,8 +190,20 @@ export default function PValueCalculator() {
                     <div className="calculator-result">P-value: {pValue.toFixed(6)}</div>
                   )}
                   <div className="extra-info-z">
-                    <img src={zTestStat} alt="Z Test Statistic" />
-                    <img src={propZTestStat} />
+                    <div className="z-stat-img">
+                      <h5>Population Mean Test</h5>
+                      <img src={zTestStat} alt="Z Test Statistic" />
+                      <br></br>
+                      <span>Use when X is normally distributed or when n &gt; 30 with σ known</span>
+                    </div>
+                    <div className="z-stat-img">
+                      <h5>Population Proportion Test</h5>
+                      <img src={propZTestStat} />
+                      <br></br>
+                      <div>
+                        Use when <InlineMath math={'n \\hat{p} \\text{ and } n(1- \\hat{p}) \\geq 10'} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
