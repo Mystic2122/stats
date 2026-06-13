@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { jStat } from "jstat";
 import MathMarkdown from "../../components/MathMarkdown";
-import "./calculatorStyles.css";
+import "./PValueCalculatorStyles.css";
 import zTestStat from "../../assets/zTestStat.png";
 import propZTestStat from "../../assets/propZtestStat.png";
 import tTestStat from "../../assets/tTestStat.png";

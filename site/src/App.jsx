@@ -3,6 +3,7 @@ import "./App.css";
 import Notes from "./pages/Notes"
 import Calculators from "./pages/Calculators"
 import PValueCalculator from "./calculators/pvalue/PValueCalculator";
+import NotePage from "./pages/NotePage";
 
 function Layout({ children }) {
   return (
@@ -53,6 +54,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/notes" element={<Notes />} />
+        <Route path="/notes/:slug" element={<NotePage />} />
         <Route path="/calculators" element={<Calculators />} />
         <Route
           path="/calculators/p-value"

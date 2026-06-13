@@ -1,8 +1,23 @@
+import { Link } from "react-router-dom";
+
 export default function Notes() {
+  const notes = [
+    {
+      id: "f-dist",
+      name: "F-Distribution",
+      slug: "f-distribution"
+    }
+  ];
+
   return (
-    <div style={{ color: "black", padding: "20px" }}>
+    <div className="notes-container">
       <h2>Notes</h2>
-      <p>This is where your notes will go.</p>
+      
+      {notes.map((note) => (
+        <Link key={note.id} to={`/notes/${note.slug}`}>
+          {note.name}
+        </Link>
+      ))}
     </div>
   );
 }
