@@ -1,18 +1,13 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { notes } from "../data/notes";
+import notes from "../data/notes";
 import MathMarkdown from "../components/MathMarkdown";
-import ReactMarkdown from "react-markdown"
-
 
 export default function NotePage() {
-    
-    const { slug } = useParams();
-    console.log("slug:", slug);
-    console.log("notes:", notes);
-    const [content, setContent] = useState("");
+  const { slug } = useParams();
+  const [content, setContent] = useState("");
 
-    const note = notes.find((n) => n.slug === slug);
+  const note = notes.find((n) => n.slug === slug);
 
     useEffect(() => {
         if (!note) return;
@@ -28,9 +23,8 @@ export default function NotePage() {
 
     return (
         <div>
-          <h1>{note.title}</h1>
           <div className="markdown">
-            <ReactMarkdown>{content}</ReactMarkdown>
+            <MathMarkdown content={content} />
           </div>
           
         </div>

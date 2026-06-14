@@ -1,9 +1,20 @@
-export const notes = [
+const notes = [
   {
-    id: "f-distribution",
-    title: "F-Distribution Notes",
-    slug: "f-distribution",
+    id: "f-dist",
+    title: "F-Distribution",
+    slug: "f-dist",
     category: "distributions",
     file: "/notes/distributions/F-distribution.md",
   },
+
+  {
+    id: "chisq-dist",
+    title: "χ² Distribution",
+    slug: "chisq-dist",
+    category: "distributions",
+    file: "/notes/distributions/ChiSq-distribution.md",
+  }
 ];
+
+export default notes;
+export { notes };
