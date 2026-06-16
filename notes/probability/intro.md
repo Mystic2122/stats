@@ -114,11 +114,36 @@ Then the union of A and B, writen as $A \cup B$, is the event whose outcomes bel
 
 And the intersection of A and B, writen as $A \cap B$, is the event whose outcomes belongs to both A and B
 
+The compliment of an event A, writen as $A^c$ is all elements in S that are not in event A.
 
-# Axioms of Probability 
+**Example**
+Let A be the event that you roll and even number on a 6-sided die and let B be the event that you roll higher than a 3.
+$$
+A \cup B = \{2,4,5,6\}\\
+A \cap B = \{4,6\}\\
+A^c = \{1,3,5\}
+$$
+
+*Definition:* Two events A and B are said to be **mutually exclusive** if $A \cap B = \emptyset$
+
+
+### Axioms of Probability 
 
 Axiom 1. Let A be any event defined over the sample space S. Then $P(A) \geq 0$
 
 Axiom 2. $P(S) = 1$
 
-Axiom 3. 
+Axiom 3. Let A and B be any two mutually exclusive events defined over S. Then
+$$
+P(A \cup B)=P(A)+P(B)
+$$
+<br>
+*Theorems:* 
+$$
+P(A^c) = 1-P(A)
+$$
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+$$
+<br>
+*Tip:* Drawing venn diagrams can help when solving these types of problems
