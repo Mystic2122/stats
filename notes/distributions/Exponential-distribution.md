@@ -67,3 +67,36 @@ $$
 M_X(t)=\frac{\lambda}{\lambda - t}
 $$
 This converges when $t<\lambda$
+
+### The CDF
+The cummulative distribution function for an exponetial random variable is
+$$
+F(x)=\int_0^x\frac{1}{\lambda}e^{-t/\lambda}dt \newline =  -e^{-t/\lambda}|_0^x \newline =1-e^{-x/\lambda}, \ \ \ \ x \geq 0
+$$
+
+Note the survival function $P(X>x)\newline =1-F(x)=e^{-x/\lambda}$
+
+This is the probability that an event has not occured by time x.
+
+For the form
+$$
+f_X(x)=\lambda e^{-\lambda x}, \ \ \ x\geq 0
+$$
+The CDF is 
+$$
+1-e^{-\lambda x}
+$$
+The corresponding survival function is $e^{-\lambda x}$
+
+### Connection to Poisson Random Variables
+
+Recall a Poisson random variable gives the probability of seeing k events in t time intervals. With the average number of events for any giving time interval $\lambda$.
+$$
+P(X=k)=\frac{e^{-\lambda t}(\lambda t)^k}{k!}
+$$
+
+Now observe when we estimate the probability of seeing no arrivals during the first t time interval.
+$$
+P(X=0)=\frac{e^{-\lambda t}(\lambda t)^0}{0!} \newline =e^{-\lambda t}
+$$
+The survival function for an exponential!
