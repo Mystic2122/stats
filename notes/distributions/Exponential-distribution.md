@@ -48,3 +48,22 @@ This form just swaps the meanings of $\lambda$ from above. Now $\lambda$ is the 
 This also makes 
 - $E[X] = \lambda$
 - $Var(X) = \lambda^2$
+
+### Moment Generating Function
+To find the moment generating function we need to calculate
+$$
+M_X(t)=E[e^{tX}]
+$$
+
+Gotta do some math
+$$
+M_X(t)=\int_0^\infty e^{tx}\frac{1}{\lambda}e^{-x/\lambda} dx \newline =\frac{1}{\lambda}\int_0^\infty e^{(t-\frac{1}{\lambda})x}dx \newline M_X(t)=\frac{1}{1-\lambda t}
+$$
+This converges when $t<\frac{1}{\lambda}$
+
+For the exponential with the form $f(x)=\lambda e^{-\lambda x}$
+The moment generating function is
+$$
+M_X(t)=\frac{\lambda}{\lambda - t}
+$$
+This converges when $t<\lambda$
