@@ -81,3 +81,21 @@ Take $ln()$ to make the math easier
 $$
 ln(P(X=k))=-\frac{1}{2}ln(2\pi)+\frac{1}{2}ln(n)-\frac{1}{2}ln(k(n-k))+kln\left(\frac{np}{k}\right)+(n-k)ln\left(\frac{n(1-p)}{n-k} \right)
 $$
+Now we expand around $k=np$
+Let $x=k-np$, the deviation from the mean
+Then
+- $k=np+x$
+- $n-k=n(1-p)-x$
+
+Now we do a Taylor Expansion around $ln(np)$
+The taylor expansion for $ln(np+x)$ is 
+$$
+ln(np+x)=ln(np)+\frac{x}{np}-\frac{x^2}{2(np)^2}+...
+$$
+and
+$$
+ln(n(1-p)-x)=ln(n(1-p))-\frac{x}{n(1-p)}-\frac{x^2}{2(n(1-p))^2}-...
+$$
+We can do this because we are only focusing around the mean of the distribution, so the taylor approximation is a good one.
+Also, we only care about the first 2 derivatives of the taylor expansion, everything after becomes negligible as $n \to \infty$
+

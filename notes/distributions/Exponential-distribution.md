@@ -14,7 +14,7 @@ Examples
 > Knowing that you've already waited for some amount of time tells you nothing about how much longer you'll have to wait.
 >> ChatGPT
 
-A prbability example would be, supposes you've already been waiting at a bus stop for 5 minutes, what is the probability that you will have to wait at least 10 more minutes for the but to arrive?
+A probability example would be, supposes you've already been waiting at a bus stop for 5 minutes, what is the probability that you will have to wait at least 10 more minutes for the but to arrive?
 
 The memoryless property says
 $$
