@@ -52,7 +52,7 @@ export default function NotePage() {
   }
 
   return (
-    <div className="note-page-container-outer">
+    <div className="note-page-container note-page-container-outer">
       <div className={dark ? "page dark-theme" : "page light-theme"}>
         <div className="topbar">
           <div className="note-title">{note.title}</div>
